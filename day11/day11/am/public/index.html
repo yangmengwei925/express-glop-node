@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./scss/index.css">
+    <script src="./libs/flexible.js"></script>
+</head>
+
+<body>
+    <div class="wrap">
+        <header class="header">
+            <div class="top">
+                猫眼
+            </div>
+        </header>
+        <main class="main">
+            <nav class="nav">
+                <span data-id="hot" class="left col">正在热映</span>
+                <span data-id="com" class="right">即将上映</span>
+            </nav>
+            <div class="content">
+                <ul id="cont">
+                    <!-- <li>邪不压正</li> -->
+                </ul>
+
+            </div>
+        </main>
+        <footer class="footer">
+
+        </footer>
+    </div>
+</body>
+
+</html>
+<script src="libs/axios.js"></script>
+<script>
+    let lis = document.querySelectorAll(".nav span")
+    // get 请求 用url地址  ？传参
+    // axios.get("http://localhost:9090/tab?i=0").then(res => {
+    axios.get("/tab?type=hot").then(res => {
+        console.log(res)
+        render(res.data)
+    })
+    lis.forEach((li,index)=> {
+        li.onclick = function () {
+            document.querySelector(".col").classList.remove("col")
+            this.classList.add("col")
+            axios.get("/tab?type="+this.dataset.id).then(res => {
+                console.log(res)
+                render(res.data)
+            })
+        }
+    })
+
+    function render(arr) {
+        cont.innerHTML = arr.map(item => {
+            return `<li>${item.nm}</li> `
+        }).join("")
+    }
+</script>

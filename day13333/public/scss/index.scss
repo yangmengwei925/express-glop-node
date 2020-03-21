@@ -1,0 +1,8 @@
+body{
+    background-color: red;
+    color: violet;
+    a{
+        transform: rotate(50deg);
+        transition: all 2s;
+    }
+}

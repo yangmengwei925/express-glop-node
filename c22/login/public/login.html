@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="./scss/index.css"> -->
+    <script src="./libs/flexible.js"></script>
+</head>
+
+<body>
+    <h4>登录页面</h4>
+    <form action="">
+        <label for="">用户名</label>
+        <input type="text" id="user">
+        <br>
+        <br>
+        <label for="">密码</label>
+        <input type="password" id="pwd">
+        <br>
+        <br>
+        <input type="button" value="登录" id="btn">
+
+    </form>
+</body>
+
+</html>
+<script src="./js/axios.js"></script>
+<script>
+    btn.onclick = function(){
+        axios.post("/user/login",{
+            user:user.value,
+            pwd:pwd.value
+        }).then(res=>{
+            console.log(res)
+            alert(res.data.msg)
+            if(res.data.code==0){
+                location.href="main.html"
+            }
+        })
+    }
+</script>

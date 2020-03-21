@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <form> -->
+    <label for="">用户名</label>
+    <input type="text" id="username">
+    <br>
+    <br>
+    <label for="">密码</label>
+    <input type="password" id="pwdname">
+    <br>
+    <br>
+    <input type="button" value="登录" id="btn">
+    <!-- <input type="button" value="提交" id="btn"> -->
+    <!-- </form> -->
+</body>
+
+</html>
+<script src="js/axios.js"></script>
+<script>
+    btn.onclick = function () {
+        // console.log(username.value,pwdname.value)
+        // axios.get("/login",{//后台只接受前台发送的 接口 数据 实在接口上面携带
+        //     params:{
+        //         user:username.value,
+        //         pwd:pwdname.value
+        //     }
+        // }).then(res=>{
+        //     console.log(res)
+        //     alert(res.data.msg)
+        // })
+
+
+        axios.post("/loginPost", {//后台只接受前台发送的 接口 数据 实在接口上面携带
+            user: username.value,
+            pwd: pwdname.value
+        }).then(res => {
+            console.log(res)
+            alert(res.data.msg)
+        })
+    }
+</script>

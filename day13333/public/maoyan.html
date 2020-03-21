@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./scss/index.css">
+    <script src="./libs/flexible.js"></script>
+</head>
+
+<body>
+    <h2>猫眼</h2>
+    <div class="wrap">
+        <header class="header">
+            <div class="top">
+                猫眼1231232
+            </div>
+        </header>
+        <main class="main">
+            <nav class="nav">
+                <span data-id="hot" class="left col">正在热映</span>
+                <span data-id="com" class="right">即将上映</span>
+            </nav>
+            <div class="content">
+                <ul id="cont">
+                    <!-- <li>邪不压正</li> -->
+                </ul>
+
+            </div>
+        </main>
+        <footer class="footer">
+
+        </footer>
+    </div>
+</body>
+
+</html>
+<!-- <script src="js/axios.js"></script> -->
+<script src="./js/ajax.js"></script>
+<script>
+    // let lis = document.querySelectorAll(".nav span")
+    // axios.post("/getData",{
+    //     i:0
+    // }).then(res => {
+    //     console.log(res)
+    //     render(res.data.movieList)
+    // })
+    // // lis.forEach((item, index) => {
+    // //     item.onclick = function () {
+    // //         document.querySelector(".col").classList.remove("col")
+    // //         this.classList.add("col")
+    // //         //get请求 url地址？传参  后台query接收
+    // //         axios.get("/getData?i="+index).then(res => {
+    // //             console.log(res)
+    // //             render(res.data)
+    // //         })
+    // //     }
+    // // })
+    
+    
+    
+    function render(data) {
+        cont.innerHTML = data.map(item => {
+            return `<li>${item.nm}</li>`
+        }).join("")
+    }
+
+
+    // axios.get("/get",{   //后台利用query接受
+    //     params:{
+    //         user:11,
+    //         pwd:11
+    //     }
+    // }).then(res=>{
+    //     console.log(res)
+    // })
+    
+
+    // axios.post("/post",{
+    //     user:12,
+    //     pwd:12
+    // }).then(res=>{
+    //     console.log(res)
+    // })
+
+        ajax.get("/get",{
+            id:1
+        }).then(res=>{
+            console.log(res)
+        })
+ 
+</script>
